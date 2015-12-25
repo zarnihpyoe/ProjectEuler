@@ -9,7 +9,7 @@ public class EvenFibonacciNumbers extends myHelpers {
 
 	// return the sum of the even Fibonacci numbers till the given maximum number 
 	public static int sumEvenFibos(int maxNum) {
-		LinkedList<Integer> fibonacciList = getFibonacciList(maxNum);		// getting a list of fibo
+		LinkedList<Integer> fibonacciList = getFibonacciList(maxNum, 1, 2);		// getting a list of fibo
 		LinkedList<Integer> evenFiboList = onlyEven(fibonacciList);			// filtering even only
 		return sum(evenFiboList);											// summation of all even fibo numbers
 	}
