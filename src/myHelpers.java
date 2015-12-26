@@ -48,16 +48,18 @@ public abstract class myHelpers {
 
 	// numbers ---------------------------------------------------
 
+
+
 	// method checking whether the given number is a prime
-	// long Version
-	public static boolean isPrime(long a) {
-		if (a<=1) {
+	// int Version
+	public static boolean isPrime(int a) {
+		if (a<2) {
 			return false;
 		} else if (a==2) {
 			return true;
 		} else {
-			for (long counter=2; counter<=Math.sqrt(a); counter++) {
-				if (a%counter==0) {
+			for (int i=2; i<=Math.sqrt(a); i++) {
+				if (a%i==0) {
 					return false;
 				}
 			}
@@ -65,13 +67,93 @@ public abstract class myHelpers {
 		}
 	}
 
-	// calling for the next prime of the given number
 	// long Version
-	public static long nextPrime(long n) {
-		long i = n;
-		do {
-			i++;
-		} while(!isPrime(i));
-		return i;
+	public static boolean isPrime(long a) {
+		if (a<2) {
+			return false;
+		} else if (a==2) {
+			return true;
+		} else {
+			for (long i=2; i<=Math.sqrt(a); i++) {
+				if (a%i==0) {
+					return false;
+				}
+			}
+			return true;
+		}
 	}
+
+
+	// calling for the next prime of the given number
+	// int Version
+	public static int nextPrime(int a) {
+		int nextPrime = a;
+		do {
+			nextPrime++;
+		} while (!isPrime(nextPrime));
+		return nextPrime;
+	}
+
+	// long Version
+	public static long nextPrime(long a) {
+		long nextPrime = a;
+		do {
+			nextPrime++;
+		} while(!isPrime(nextPrime));
+		return nextPrime;
+	}
+
+
+
+	// return nth prime where n is the given number
+	// int Version
+	public static int nthPrime(int n) {
+		int i=0;
+		int prime=0;
+		while (i!=n) {
+			i++;
+			prime = nextPrime(prime);
+		}
+		return prime;
+	}
+
+	// long Version
+	public static long nthPrime(long n) {
+		long i=0;
+		long prime=0;
+		while (i!=n) {
+			i++;
+			prime = nextPrime(prime);
+		}
+		return prime;
+	}
+	
+	
+	// sum the primes which are less than the given number
+	// int Version
+	public static long sumPrimesLessThan(int n) {
+		int sum = 0;
+		long curr_prime = 0;
+		
+		while (curr_prime<n) {
+			sum +=curr_prime;
+			curr_prime=nextPrime(curr_prime);
+			
+		}
+		return sum;
+	}
+	
+	// long Version
+	public static long sumPrimesLessThan(long n) {
+		long sum = 0;
+		long curr_prime = 0;
+		
+		while (curr_prime<n) {
+			sum +=curr_prime;
+			curr_prime=nextPrime(curr_prime);
+			
+		}
+		return sum;
+	}
+	
 }
